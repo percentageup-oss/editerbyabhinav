@@ -471,7 +471,7 @@ pub struct PresetFile {
     pub format: String,
     pub version: u32,
     pub name: String,
-    /// The OS the key names were written for; None = canonical (FilmCraft) notation.
+    /// The OS the key names were written for; None = canonical (AbtoEdit) notation.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub platform: Option<Platform>,
     /// `active.json` only: the active set differs from the preset it started from.
@@ -564,7 +564,7 @@ impl Shortcuts {
 
     // ---------------------------------------------------------------- presets
 
-    /// Default bindings of every known command, plus FilmCraft's panel shortcuts.
+    /// Default bindings of every known command, plus AbtoEdit's panel shortcuts.
     fn base_defaults(&self) -> Vec<Binding> {
         let mut out = Vec::new();
         for c in self.commands() {
@@ -1075,7 +1075,7 @@ fn read_file(path: &Path) -> std::result::Result<PresetFile, String> {
     let bytes = std::fs::read(path).map_err(|e| format!("{}: {e}", path.display()))?;
     let f: PresetFile = serde_json::from_slice(&bytes).map_err(|e| format!("{}: {e}", path.display()))?;
     if f.format != FILE_FORMAT {
-        return Err(format!("{}: not a FilmCraft keyboard shortcuts file", path.display()));
+        return Err(format!("{}: not a AbtoEdit keyboard shortcuts file", path.display()));
     }
     Ok(f)
 }

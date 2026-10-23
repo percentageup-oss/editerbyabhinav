@@ -5,7 +5,7 @@
 //! project as `<name>-YYYY-MM-DD_HH-MM-SS.fcproj`, keeping at most *Maximum Project Versions* files.
 //! Optionally the project file itself is saved too.
 //!
-//! **Recovery journal** (FilmCraft addition): while the project has unsaved changes, a snapshot is
+//! **Recovery journal** (AbtoEdit addition): while the project has unsaved changes, a snapshot is
 //! written to `<data dir>/Recovery/<session>/snapshot.fcproj` shortly after each change (debounced,
 //! and at least every *N* seconds while edits keep coming). Each running app holds an OS lock on
 //! `<session>/lock`; when the process dies (crash, `kill -9`, power cut) the lock is released, so on
@@ -96,8 +96,8 @@ pub struct PlaybackPrefs {
     /// a paused frame. Off by default.
     pub draft_decode: bool,
     /// "Hardware decoding": `auto` (default: the system's hardware decoder for streams it
-    /// supports, e.g. VideoToolbox H.264 / HEVC on macOS, falling back to FilmCraft's own decoder)
-    /// or `off` (always FilmCraft's own decoders). Media already open keeps its decoder until it
+    /// supports, e.g. VideoToolbox H.264 / HEVC on macOS, falling back to AbtoEdit's own decoder)
+    /// or `off` (always AbtoEdit's own decoders). Media already open keeps its decoder until it
     /// is reopened.
     pub hardware_decoding: String,
 }
